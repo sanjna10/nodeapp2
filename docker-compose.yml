@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  backend:
+
+    build:
+      context: ./seprojbackend
+      dockerfile: ./Dockerfile
+    image: "docker/backend"
+    ports:
+      - "8888:2500"
+  frontend:
+    build:
+      context: ./seprojfrontend
+      dockerfile: ./Dockerfile
+    image: "docker/frontend"
+    ports:
+      - "9000:3000"
+    links:
+      - "backend:be"
